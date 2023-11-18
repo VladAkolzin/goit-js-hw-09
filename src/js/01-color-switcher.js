@@ -2,8 +2,11 @@ const refs = {
   start: document.querySelector('button[data-start]'),
   stop: document.querySelector('button[data-stop]'),
 };
+refs.stop.setAttribute('disabled', true);
 refs.start.addEventListener('click', () => {
+  refs.stop.removeAttribute('disabled');
   refs.start.setAttribute('disabled', true);
+
   timerId = setInterval(() => {
     const randomColor = getRandomHexColor();
     document.body.style.backgroundColor = randomColor;
@@ -11,6 +14,7 @@ refs.start.addEventListener('click', () => {
 });
 refs.stop.addEventListener('click', () => {
   refs.start.removeAttribute('disabled');
+  refs.stop.setAttribute('disabled', true);
   clearInterval(timerId);
 });
 function getRandomHexColor() {
