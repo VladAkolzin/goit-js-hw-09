@@ -20,9 +20,11 @@ function createPromise(position, delay) {
 }
 function handleSubmit(event) {
   event.preventDefault();
-  const delayValue = Number(refs.inputDelay.value);
+
+  const stepValue = Number(refs.inputStep.value);
   const amountValue = Number(refs.inputAmount.value);
-  let delay = delayValue;
+  let delay = Number(refs.inputDelay.value);
+
   for (let position = 1; position <= amountValue; position += 1) {
     createPromise(position, delay)
       .then(({ position, delay }) => {
@@ -35,6 +37,6 @@ function handleSubmit(event) {
           `❌ Rejected promise ${position} in ${delay}ms`
         );
       });
-    delay += delayValue;
+    delay += stepValue;
   }
 }

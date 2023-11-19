@@ -2,6 +2,7 @@ const refs = {
   start: document.querySelector('button[data-start]'),
   stop: document.querySelector('button[data-stop]'),
 };
+let timerId;
 refs.stop.setAttribute('disabled', true);
 refs.start.addEventListener('click', () => {
   refs.stop.removeAttribute('disabled');
